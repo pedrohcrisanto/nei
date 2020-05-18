@@ -1,6 +1,13 @@
 class Sale < ApplicationRecord
   belongs_to :company
   belongs_to :product
+  after_create :set_value
+
+  def set_value
+    product = Product.find(self.product_id)
+    value = self.amount * product.price
+    self.update_column(:value, value)
+  end
 
   def base_connect(sql)
     ActiveRecord::Base.connection.exec_query(sql)
