@@ -3,7 +3,7 @@ class SalesController < ApplicationController
 
   # GET /sales
   def index
-    @sales = Sale.new.index_sql
+    @sales = Sale.all
 
     render json: @sales
   end
@@ -41,7 +41,7 @@ class SalesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
-      @sale = Sale.find_by_id_sql(params[:id])
+      @sale = Sale.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
