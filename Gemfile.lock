@@ -179,6 +179,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   factory_bot_rails
+  i18n
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   pry-rails

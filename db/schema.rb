@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_05_17_184100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "cnpj"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "product_id", null: false
+    t.date "date"
+    t.float "value"
+    t.integer "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_sales_on_company_id"
+    t.index ["product_id"], name: "index_sales_on_product_id"
+  end
+
+  add_foreign_key "sales", "companies"
+  add_foreign_key "sales", "products"
 end
