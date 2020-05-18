@@ -20,5 +20,17 @@ class Sale < ApplicationRecord
   # def index_sql
   #   base_connect("SELECT * from sales ORDER BY sales.id")
   # end
-  
+  def self.to_csv
+    attributes = %w{id}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |sale|
+        csv << attributes.map{ |attr| sale.send(attr) }
+      end
+    end
+  end
+
+
 end
