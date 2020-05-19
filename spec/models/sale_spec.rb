@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 describe Sale do
-  Product.create(name: "Produto", price: 123.2)
-  Company.create(name: "Empresa", cnpj: "123123213")
-  Sale.create!(company_id: 1, product_id: 1, date: Date.today, amount: 123)
+  # Product.create(name: "Produto", price: 123.2)
+  # Company.create(name: "Empresa", cnpj: "123123213")
+  # Sale.create!(company_id: 1, product_id: 1, date: Date.today, amount: 123)
+  company = FactoryBot.create(:company)
+  product = FactoryBot.create(:product)
+  sale = FactoryBot.create(:sale)
   # describe "#index_sql" do
   #   context "success consult result" do
   #     subject { described_class.new }
@@ -21,6 +24,14 @@ describe Sale do
   #     end
   #   end
   # end
+  it "attr type" do
+    expect(sale.id).to be_a(Integer)
+    expect(sale.company_id).to be_a(Integer)
+    expect(sale.product_id).to be_a(Integer)
+    expect(sale.date).to be_a(Date)
+    expect(sale.value).to be_a(Float)
+    expect(sale.amount).to be_a(Integer)
+  end
 
   describe "#set_value" do
     context "success set_value" do
