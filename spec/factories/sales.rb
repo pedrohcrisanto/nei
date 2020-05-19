@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :sale do
-    company { nil }
-    product { nil }
-    date { "2020-05-17" }
-    value { 1.5 }
-    amount { 1 }
+    company { Company.all.sample }
+    product { Product.all.sample }
+    date { Faker::Date.in_date_period(month: 2) }
+    amount { Faker::Number.number(digits: 2)) }
   end
 end

@@ -9,11 +9,13 @@ class SalesController < ApplicationController
   end
 
   def export
-    @sales = Sale.all
+    @sales = Sale.order(:date)
+
     respond_to do |format|
       format.csv { send_data @sales.to_csv, filename: "sales-#{Date.today}.csv" }
     end
   end
+  
   # GET /sales/1
   def show
     render json: @sale

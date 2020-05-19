@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
-    name { "MyString" }
-    price { 1.5 }
+    name { Faker::Food.fruits }
+    price { Faker::Number.decimal(l_digits: 2) }
   end
 end

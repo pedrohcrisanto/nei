@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :company do
-    name { "MyString" }
-    cnpj { "MyString" }
+    name { Faker::Company.name }
+    cnpj { Faker::Company.brazilian_company_number(formatted: true) }
   end
 end
