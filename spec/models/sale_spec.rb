@@ -37,7 +37,7 @@ describe Sale do
     context "success set_value" do
       subject { described_class.find(1) }
       it "update value" do
-        expect(subject.value).to eql (subject.amount * Product.find(subject.product_id).price)
+        expect(subject.value.floor(2)).to eql ((subject.amount * Product.find(subject.product_id).price).floor(2))
       end
     end
   end

@@ -10,6 +10,10 @@ RSpec.describe SalesController, type: :routing do
       expect(get: "/sales/1").to route_to("sales#show", id: "1")
     end
 
+    it "routes to #export" do
+      expect(get: "/export").to route_to("sales#export")
+    end
+
     it "routes to #create" do
       expect(post: "/sales").to route_to("sales#create")
     end
